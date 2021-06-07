@@ -38,7 +38,12 @@ namespace SE1426_Group2_Lab3
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.screen = new System.Windows.Forms.Panel();
+            this.musicStoreDataSet = new SE1426_Group2_Lab3.MusicStoreDataSet();
+            this.albumsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.albumsTableAdapter = new SE1426_Group2_Lab3.MusicStoreDataSetTableAdapters.AlbumsTableAdapter();
             this.Menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.musicStoreDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Menu
@@ -99,6 +104,20 @@ namespace SE1426_Group2_Lab3
             this.screen.TabIndex = 2;
             this.screen.Paint += new System.Windows.Forms.PaintEventHandler(this.screen_Paint);
             // 
+            // musicStoreDataSet
+            // 
+            this.musicStoreDataSet.DataSetName = "MusicStoreDataSet";
+            this.musicStoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // albumsBindingSource
+            // 
+            this.albumsBindingSource.DataMember = "Albums";
+            this.albumsBindingSource.DataSource = this.musicStoreDataSet;
+            // 
+            // albumsTableAdapter
+            // 
+            this.albumsTableAdapter.ClearBeforeFill = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -109,8 +128,11 @@ namespace SE1426_Group2_Lab3
             this.MainMenuStrip = this.Menu;
             this.Name = "Main";
             this.Text = "Music store";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.Menu.ResumeLayout(false);
             this.Menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.musicStoreDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.albumsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +147,9 @@ namespace SE1426_Group2_Lab3
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Panel screen;
+        private MusicStoreDataSet musicStoreDataSet;
+        private System.Windows.Forms.BindingSource albumsBindingSource;
+        private MusicStoreDataSetTableAdapters.AlbumsTableAdapter albumsTableAdapter;
     }
 }
 
